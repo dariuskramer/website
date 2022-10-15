@@ -138,6 +138,7 @@ Why has the company refused to answer your request?`,
                 {
                     text: 'none of the above',
                     targetStepId: 'base::dead-end',
+                    onChoose: ({ reactorState }) => reactorState.setIncludeIssue('wrong-medium', false),
                 },
             ],
         },

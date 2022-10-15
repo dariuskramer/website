@@ -105,7 +105,11 @@ export const module = createReactorModule('id-copy', {
             body: 'In this case, we’ll assume that the company can legitimately ask for an ID copy. Can you/do you want to provide a copy of an identity document for the request? You will be able to redact all information that is not necessary for confirming your identity.',
             options: [
                 { text: 'yes', targetStepId: 'id-copy::redaction-info' },
-                { text: 'no', targetStepId: 'base::dead-end' },
+                {
+                    text: 'no',
+                    targetStepId: 'base::dead-end',
+                    onChoose: ({ reactorState }) => reactorState.setIncludeIssue('id-copy', false),
+                },
             ],
         },
         {
